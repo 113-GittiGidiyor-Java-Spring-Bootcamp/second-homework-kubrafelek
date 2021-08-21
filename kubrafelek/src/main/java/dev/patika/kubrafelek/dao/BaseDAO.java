@@ -1,5 +1,7 @@
 package dev.patika.kubrafelek.dao;
 
+import dev.patika.kubrafelek.model.Student;
+
 import java.util.List;
 
 public interface BaseDAO<T> {
@@ -7,7 +9,9 @@ public interface BaseDAO<T> {
 
     T findById(int id);
 
-    void save(T object);
+   T save(T object);
 
-    void deleteById(int id);
+    int deleteById(int id);
+
+    T update(T object);
 }

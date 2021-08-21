@@ -4,6 +4,7 @@ import dev.patika.kubrafelek.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class StudentDAOJPAImpl implements StudentDAO<Student> {
@@ -20,19 +21,27 @@ public class StudentDAOJPAImpl implements StudentDAO<Student> {
         return entityManager.createQuery("FROM Student s", Student.class).getResultList();
     }
 
-
     @Override
     public Student findById(int id) {
-        return null;
+        return entityManager.find(Student.class, id);
     }
 
     @Override
-    public void save(Student object) {
-
+    public Student save(Student student) {
+        return entityManager.merge(student);
     }
 
     @Override
-    public void deleteById(int id) {
+    public int deleteById(int id) {
+        Student student = entityManager.find(Student.class, id);
+        entityManager.remove(student);
+        return id;
+    }
 
+    @Override
+    @Transactional
+    public Student update(Student student) {
+        entityManager.merge(student);
+        return student;
     }
 }
