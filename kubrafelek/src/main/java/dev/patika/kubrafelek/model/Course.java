@@ -3,6 +3,7 @@ package dev.patika.kubrafelek.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Course {
@@ -69,4 +70,28 @@ public class Course {
         this.instructor = instructor;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return id == course.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", courseName='" + courseName + '\'' +
+                ", courseCode=" + courseCode +
+                ", creditScore=" + creditScore +
+                ", instructor=" + instructor +
+                ", studentList=" + studentList +
+                '}';
+    }
 }
