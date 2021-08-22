@@ -23,12 +23,13 @@ public class InstructorController {
         return new ResponseEntity(instructorService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/instructors/{id}")
     public ResponseEntity<Instructor> findInstructorById(@PathVariable int id) {
         return new ResponseEntity<>(instructorService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping("/instructors")
-    public Instructor saveInstructor(Instructor instructor) {
+    public Instructor saveInstructor(@RequestBody Instructor instructor) {
         return instructorService.save(instructor);
     }
 

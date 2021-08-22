@@ -26,12 +26,13 @@ public class StudentController {
         return new ResponseEntity(studentService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/students/{id}")
     public ResponseEntity<Student> findStudentById(@PathVariable int id) {
         return new ResponseEntity<>(studentService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping("/students")
-    public Student saveStudent(Student student) {
+    public Student saveStudent(@RequestBody Student student) {
         return studentService.save(student);
     }
 
