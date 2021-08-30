@@ -20,7 +20,7 @@ public class CourseController {
 
     @GetMapping("/courses")
     public ResponseEntity findAll() {
-        return new ResponseEntity(courseService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/courses/{id}")

@@ -2,6 +2,7 @@ package dev.patika.kubrafelek.service;
 
 import dev.patika.kubrafelek.dao.CourseDAO;
 import dev.patika.kubrafelek.model.Course;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
